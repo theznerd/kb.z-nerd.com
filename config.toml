@@ -12,7 +12,7 @@ url = "http://www.z-nerd.com/"
 weight = 1
 
 [[menu.shortcuts]]
-name = "<i class='fa fa-twitter'></i> Z-Nerd Blog"
+name = "<i class='fa fa-twitter'></i> Z-Nerd Twitter"
 identifier = "twitter"
 url = "https://twitter.com/theznerd"
 weight = 2
