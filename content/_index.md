@@ -1,5 +1,5 @@
 ---
-title: "_Index"
+title: "Welcome"
 date: 2017-09-05T14:42:15-06:00
 draft: false
 ---

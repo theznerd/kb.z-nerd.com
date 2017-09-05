@@ -4,6 +4,7 @@ title = "My New Hugo Site"
 theme = "docdock"
 [outputs]
 home = [ "HTML", "RSS", "JSON"]
+
 [[menu.shortcuts]]
 pre = "<h3>More</h3>"
 name = "<i class='fa fa-globe'></i> Z-Nerd Blog"
