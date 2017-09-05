@@ -4,3 +4,21 @@ title = "My New Hugo Site"
 theme = "docdock"
 [outputs]
 home = [ "HTML", "RSS", "JSON"]
+[[menu.shortcuts]]
+pre = "<h3>More</h3>"
+name = "<i class='fa fa-github'></i> Z-Nerd Github"
+identifier = "ds"
+url = "https://github.com/theznerd"
+weight = 1
+
+[[menu.shortcuts]]
+name = "<i class='fa fa-globe'></i> Z-Nerd Blog"
+identifier = "blog"
+url = "http://www.z-nerd.com/"
+weight = 2
+
+[[menu.shortcuts]]
+name = "<i class='fa fa-twitter'></i> Z-Nerd Blog"
+identifier = "twitter"
+url = "https://twitter.com/theznerd"
+weight = 3
