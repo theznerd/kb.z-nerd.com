@@ -9,17 +9,17 @@ Preflight checks are great for task sequences where you want to validate whether
 ### The Setup
 First create a folder for your pre-flight checks to keep everything organized. This should be the first step in your task sequence (or very early on).
 
-![List of steps in a task sequence](/img/ConfigMan/TaskSequences/PreflightChecks/ts-pfc1.png)
+![List of steps in a task sequence](/img/ConfigMan/TaskSequences/PreflightChecks/ts-pfc1.png?classes=border,shadow)
 
 Next you need to create a step that runs when we detect a failure. A "Run Command Line" step that runs `cmd /c echo fail` with options "Success codes:" equal 9999 and only runs when "TSFailure" equals "True"
 
-![Options for Run Command Line Step](/img/ConfigMan/TaskSequences/PreflightChecks/ts-pfc2.png)
-![Properties for Run Command Line Step](/img/ConfigMan/TaskSequences/PreflightChecks/ts-pfc3.png)
+![Options for Run Command Line Step](/img/ConfigMan/TaskSequences/PreflightChecks/ts-pfc2.png?classes=border,shadow)
+![Properties for Run Command Line Step](/img/ConfigMan/TaskSequences/PreflightChecks/ts-pfc3.png?classes=border,shadow)
 
 ### Preflight Check Template
 The template for a preflight check is just a "Set Dynamic Variables" step. It sets the TSFailure variable to "True" and then adds a description of what the failure was to PFFailure using two if statements (one to add if it already exists, one to create if it doesn't exist).
 
-![Properties for a preflight check](/img/ConfigMan/TaskSequences/PreflightChecks/ts-pfc4.png)
+![Properties for a preflight check](/img/ConfigMan/TaskSequences/PreflightChecks/ts-pfc4.png?classes=border,shadow)
 
 ### Known Preflight Checks
 This is a list of pre-flight checks that I use on the regular...
@@ -39,7 +39,7 @@ WMI Query: `select * from Win32_Battery where BatteryStatus <> 2`
 
 ##### Properties
 
-![Properties for AC Power Check](/img/ConfigMan/TaskSequences/PreflightChecks/ts-pfc6.png)
+![Properties for AC Power Check](/img/ConfigMan/TaskSequences/PreflightChecks/ts-pfc6.png?classes=border,shadow)
 
 #### USB Drive Check
 This one is really simple too (relatively). Basically just a WMI query to Win32_DiskDrive and make sure that the interface is not USB. I did run into one gotcha with Lenovo machines for a specific card reader (Generic-SD/MMC USB Device) that I needed to exclude.
@@ -50,7 +50,7 @@ WMI Query: `select * from Win32_DiskDrive WHERE InterfaceType="USB" and not Mode
 
 #### Properties
 
-![Properties for USB Drive Check](/img/ConfigMan/TaskSequences/PreflightChecks/ts-pfc7.png)
+![Properties for USB Drive Check](/img/ConfigMan/TaskSequences/PreflightChecks/ts-pfc7.png?classes=border,shadow)
 
 #### Wired Network Check
 This one is more challenging. It relies on Win32_NetworkAdapter and the most reliable way to run this one in my opinion is to get the names of the adapters, add the AdapterType property, and add the NetConnectionStatus property. The structure of your query will read
@@ -81,4 +81,4 @@ WHERE (
 
 #### PROPERTIES
 
-![Properties for Wired Network Check](/img/ConfigMan/TaskSequences/PreflightChecks/ts-pfc8.png)
+![Properties for Wired Network Check](/img/ConfigMan/TaskSequences/PreflightChecks/ts-pfc8.png?classes=border,shadow)
