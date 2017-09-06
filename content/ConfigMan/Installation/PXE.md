@@ -2,7 +2,7 @@
 Title: "PXE"
 date: 2017-09-05T15:26:39-06:00
 draft: false
-weight: 1
+weight: 3
 ---
 While there are a couple methods to boot a bare metal machine (or a reimage) I like the convenience of PXE. However, it doesn't come without it's pitfalls. The process for PXE booting works similar to this:
 {{% panel footer="Jason Sandys: [Link](https://social.technet.microsoft.com/Forums/systemcenter/en-US/78781ba5-b7c2-4201-9880-5368be145882/sccm-pxe-and-dhcp?forum=configmgrgeneral)" %}}
