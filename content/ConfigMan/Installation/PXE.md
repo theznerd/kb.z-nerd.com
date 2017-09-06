@@ -14,7 +14,7 @@ While there are a couple methods to boot a bare metal machine (or a reimage) I l
 6. NIC TFTPs boot image (from WDS)
 {{% /panel %}}
 
-At step 3, if DHCP Options 66 / 67 are configured, the NIC will boot to the information returned by DHCP. If those options are not configured the NIC will send a broadcast message out asking for a PXE service point. This becomes a problem if the PXE server (SCCM) is not on the same subnet as the device requesting the PXE boot. This is where IP helpers come into play.
+At step 3, if DHCP Options 66 and 67 are configured, the NIC will boot to the information returned by DHCP. If those options are not configured the NIC will send a broadcast message out asking for a PXE service point. This becomes a problem if the PXE server (SCCM) is not on the same subnet as the device requesting the PXE boot. This is where IP helpers come into play.
 
 ### IP Helpers
 If your DP/PXE server does not reside on the same subnet as the device that is PXE booting you will have to setup an IP Helper (or configure DHCP Options 66/67 - but this is not recommended by Microsoft). An IP helper (setup on a Layer 3 device - typically the router for the subnet) will basically take this broadcast packet and make sure that the request gets to the appropriate device on the appropriate subnet.
