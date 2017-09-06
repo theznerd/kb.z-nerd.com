@@ -1,6 +1,6 @@
 baseURL = "/"
 languageCode = "en-us"
-title = "My New Hugo Site"
+title = "Z-Nerd KB"
 theme = "docdock"
 [outputs]
 home = [ "HTML", "RSS", "JSON"]
