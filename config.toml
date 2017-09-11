@@ -9,7 +9,7 @@ home = [ "HTML", "RSS", "JSON"]
 pre = "<h3>More</h3>"
 name = "<i class='fa fa-globe'></i> Z-Nerd Blog"
 identifier = "blog"
-url = "http://www.z-nerd.com/"
+url = "http://z-nerd.com/"
 weight = 1
 
 [[menu.shortcuts]]
