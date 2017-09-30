@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en" class="js csstransforms3d">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="generator" content="Hugo 0.29" />
+    <meta name="description" content="">
+
+
+    <title>Preflight Checks :: Z-Nerd KB</title>
+    <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
+    <link href="/css/nucleus.css" rel="stylesheet">
+    <link href="/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/css/hybrid.css" rel="stylesheet">
+    <link href="/css/featherlight.min.css" rel="stylesheet">
+    <link href="/css/horsey.css" rel="stylesheet">
+    
+    <link href="/css/theme.css" rel="stylesheet">
+    
+    
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <script src="/js/jquery-2.x.min.js"></script>
+    <style type="text/css">
+      :root #header + #content > #left > #rlblock_left {
+        display:none !important;
+      }
+    </style>
+
+    
+
+    
+
+  </head>
+  <body class="" data-url="/configman/tasksequences/preflightchecks/">
+    <nav id="sidebar" class="">
+
+
+
+
+
+<div class="highlightable">
+  <div id="header-wrapper">
+    <div id="header">
+       
+	<h4 style="color: #FFFFFF">Z-Nerd KB</h4>
+ 
+
+
+    </div>
+    
+        <div class="searchbox">
+    <label for="search-by"><i class="fa fa-search"></i></label>
+    <input data-search-input id="search-by" type="text" placeholder="Search...">
+    <span data-search-clear=""><i class="fa fa-close"></i></span>
+</div>
+<script type="text/javascript" src="/js/lunr.min.js"></script>
+<script type="text/javascript" src="/js/horsey.js"></script>
+<script type="text/javascript">
+    var baseurl = "\/";
+</script>
+<script type="text/javascript" src="/js/search.js"></script>
+
+    
+  </div>
+
+  
+    <ul class="topics">
+        
+            <li data-nav-id="/" class="dd-item">
+            <a href="/"><i class="fa fa-home"></i> Home Page</a>
+            </li>
+        
+        
+        
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="/configman/" class="dd-item 
+        parent
+        
+        
+        ">
+      <a href="/configman/">
+        <span><i class='fa fa-list-ul'></i> ConfigMan / SCCM</span>
+
+        
+        
+
+          
+            <i class="fa fa-angle-down fa-lg category-icon"></i>
+          
+
+        
+
+        
+      </a>
+      
+        <ul>
+          
+          
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/configman/installation/" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/configman/installation/">
+        <span>Installation</span>
+
+        
+        
+
+          
+            <i class="fa fa-angle-right fa-lg category-icon"></i>
+          
+
+        
+
+        
+      </a>
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/configman/installation/prerequisites/" class="dd-item
+     
+      ">
+        <a href="/configman/installation/prerequisites/">
+        <span>Prerequisites</span> 
+        
+        </a></li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/configman/installation/sqlserver/" class="dd-item
+     
+      ">
+        <a href="/configman/installation/sqlserver/">
+        <span>SQL Server</span> 
+        
+        </a></li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/configman/installation/pxe/" class="dd-item
+     
+      ">
+        <a href="/configman/installation/pxe/">
+        <span>PXE</span> 
+        
+        </a></li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/configman/installation/wsus/" class="dd-item
+     
+      ">
+        <a href="/configman/installation/wsus/">
+        <span>WSUS</span> 
+        
+        </a></li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/configman/tasksequences/" class="dd-item 
+        parent
+        
+        
+        ">
+      <a href="/configman/tasksequences/">
+        <span>Task Sequences</span>
+
+        
+        
+
+          
+            <i class="fa fa-angle-down fa-lg category-icon"></i>
+          
+
+        
+
+        
+      </a>
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/configman/tasksequences/drivers/" class="dd-item
+     
+      ">
+        <a href="/configman/tasksequences/drivers/">
+        <span>Drivers</span> 
+        
+        </a></li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/configman/tasksequences/preflightchecks/" class="dd-item
+     active
+      ">
+        <a href="/configman/tasksequences/preflightchecks/">
+        <span>Preflight Checks</span> 
+        
+        </a></li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/configman/tasksequences/imagemarkers/" class="dd-item
+     
+      ">
+        <a href="/configman/tasksequences/imagemarkers/">
+        <span>Image Markers</span> 
+        
+        </a></li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/configman/tasksequences/bios2uefi-dell/" class="dd-item
+     
+      ">
+        <a href="/configman/tasksequences/bios2uefi-dell/">
+        <span>BIOS 2 UEFI - Dell</span> 
+        
+        </a></li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/configman/tasksequences/bios2uefi-lenovo/" class="dd-item
+     
+      ">
+        <a href="/configman/tasksequences/bios2uefi-lenovo/">
+        <span>BIOS 2 UEFI - Lenovo</span> 
+        
+        </a></li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+        
+
+        
+        <section id="shortcuts">
+            
+                <li class="" role="">
+                    <h3>More</h3>
+                    <a href="http://z-nerd.com/"><i class='fa fa-globe'></i> Z-Nerd Blog</a>
+                    
+                </li>
+            
+                <li class="" role="">
+                    
+                    <a href="https://twitter.com/theznerd"><i class='fa fa-twitter'></i> Z-Nerd Twitter</a>
+                    
+                </li>
+            
+                <li class="" role="">
+                    
+                    <a href="https://github.com/theznerd"><i class='fa fa-github'></i> Z-Nerd Github</a>
+                    
+                </li>
+            
+        </section>    
+        
+        
+
+        
+    </ul>
+    
+     
+    <section id="footer">
+      
+    </section>
+  </div>
+</nav>
+
+
+
+
+        <section id="body">
+        <div id="overlay"></div>
+        <div class="padding highlightable">
+        
+          <div id="top-bar">
+            
+
+            <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                <span id="sidebar-toggle-span">
+                  <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                    <i class="fa fa-bars"></i>
+                  </a>
+                </span>
+                <span id="toc-menu"><i class="fa fa-list-alt"></i></span>
+                <span class="links">
+                
+
+
+
+
+
+
+
+
+
+
+ <a href='/'>Welcome</a> > <a href='/configman/'>ConfigMan / SCCM</a> > <a href='/configman/tasksequences/'>Task Sequences</a> > Preflight Checks
+
+ 
+
+ 
+
+ 
+
+   
+                </span>
+            </div>
+            <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#the-setup">The Setup</a></li>
+<li><a href="#preflight-check-template">Preflight Check Template</a></li>
+<li><a href="#known-preflight-checks">Known Preflight Checks</a>
+<ul>
+<li><a href="#ac-power-check">AC Power Check</a>
+<ul>
+<li><a href="#options">Options</a></li>
+<li><a href="#properties">Properties</a></li>
+</ul></li>
+<li><a href="#usb-drive-check">USB Drive Check</a></li>
+<li><a href="#options-1">Options</a></li>
+<li><a href="#properties-1">Properties</a></li>
+<li><a href="#wired-network-check">Wired Network Check</a></li>
+<li><a href="#options-2">OPTIONS</a></li>
+<li><a href="#properties-2">PROPERTIES</a></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+    </div>
+</div>
+
+          </div>
+        
+        
+        <div id="body-inner">
+          
+            <h1>Preflight Checks</h1>
+          
+
+
+
+
+
+
+<p>Preflight checks are great for task sequences where you want to validate whether or not the task sequence should/can run. I handle preflight checks using a combination of options on &ldquo;Set Dynamic Variables&rdquo; and a final &ldquo;Run Command Line&rdquo; step with an option to look at that &ldquo;master&rdquo; variable. I also write to a separate variable to keep track of which pre-flight checks have failed so that I can notify on all the failure rather than possibly running the task sequence multiple times to detect them all.</p>
+
+<h3 id="the-setup">The Setup</h3>
+
+<p>First create a folder for your pre-flight checks to keep everything organized. This should be the first step in your task sequence (or very early on).</p>
+
+<p><img src="/img/ConfigMan/TaskSequences/PreflightChecks/ts-pfc1.png?classes=border,shadow" alt="List of steps in a task sequence" /></p>
+
+<p>Next you need to create a step that runs when we detect a failure. A &ldquo;Run Command Line&rdquo; step that runs <code>cmd /c echo fail</code> with options &ldquo;Success codes:&rdquo; equal 9999 and only runs when &ldquo;TSFailure&rdquo; equals &ldquo;True&rdquo;</p>
+
+<p><img src="/img/ConfigMan/TaskSequences/PreflightChecks/ts-pfc2.png?classes=border,shadow" alt="Options for Run Command Line Step" />
+<img src="/img/ConfigMan/TaskSequences/PreflightChecks/ts-pfc3.png?classes=border,shadow" alt="Properties for Run Command Line Step" /></p>
+
+<h3 id="preflight-check-template">Preflight Check Template</h3>
+
+<p>The template for a preflight check is just a &ldquo;Set Dynamic Variables&rdquo; step. It sets the TSFailure variable to &ldquo;True&rdquo; and then adds a description of what the failure was to PFFailure using two if statements (one to add if it already exists, one to create if it doesn&rsquo;t exist).</p>
+
+<p><img src="/img/ConfigMan/TaskSequences/PreflightChecks/ts-pfc4.png?classes=border,shadow" alt="Properties for a preflight check" /></p>
+
+<h3 id="known-preflight-checks">Known Preflight Checks</h3>
+
+<p>This is a list of pre-flight checks that I use on the regular&hellip;</p>
+
+<h4 id="ac-power-check">AC Power Check</h4>
+
+<p>This one is relatively simple, except that when you run this step in WinPE you need to load the battery driver. To do that create a &ldquo;Run Command Line&rdquo; step before this preflight check that runs the following command:</p>
+
+<p><code>drvload %SystemRoot%\Inf\Battery.inf</code></p>
+
+<p>And have this step only run if the Task Sequence Variable &ldquo;_SMSTSInWinPE&rdquo; equals &ldquo;True&rdquo;</p>
+
+<p>The code for this preflight check is as follows:</p>
+
+<h5 id="options">Options</h5>
+
+<p>WMI Query: <code>select * from Win32_Battery where BatteryStatus &lt;&gt; 2</code></p>
+
+<h5 id="properties">Properties</h5>
+
+<p><img src="/img/ConfigMan/TaskSequences/PreflightChecks/ts-pfc6.png?classes=border,shadow" alt="Properties for AC Power Check" /></p>
+
+<h4 id="usb-drive-check">USB Drive Check</h4>
+
+<p>This one is really simple too (relatively). Basically just a WMI query to Win32_DiskDrive and make sure that the interface is not USB. I did run into one gotcha with Lenovo machines for a specific card reader (Generic-SD/MMC USB Device) that I needed to exclude.</p>
+
+<h4 id="options-1">Options</h4>
+
+<p>WMI Query: <code>select * from Win32_DiskDrive WHERE InterfaceType=&quot;USB&quot; and not Model=&quot;Generic- SD/MMC USB Device&quot;</code></p>
+
+<h4 id="properties-1">Properties</h4>
+
+<p><img src="/img/ConfigMan/TaskSequences/PreflightChecks/ts-pfc7.png?classes=border,shadow" alt="Properties for USB Drive Check" /></p>
+
+<h4 id="wired-network-check">Wired Network Check</h4>
+
+<p>This one is more challenging. It relies on Win32_NetworkAdapter and the most reliable way to run this one in my opinion is to get the names of the adapters, add the AdapterType property, and add the NetConnectionStatus property. The structure of your query will read</p>
+
+<p>WHERE (</p>
+
+<p>(Name like &ldquo;%nameofadapter% OR Name like &ldquo;%nameofadapter2%)</p>
+
+<p>AND AdapterType LIKE &ldquo;%ethernet%&rdquo;</p>
+
+<p>AND NetConnectionStatus = 2</p>
+
+<p>)</p>
+
+<p>Clear as mud? I was able to get the names of the network adapters through SSMS &ldquo;Reports &gt; Hardware - Network Adapters &gt; Count network adapters by type&rdquo;</p>
+
+<h4 id="options-2">OPTIONS</h4>
+
+<p>WMI Query:</p>
+
+<pre><code>Select * from Win32_NetworkAdapter 
+WHERE (
+  (Name LIKE &quot;%EthernetAdapterName%&quot; OR Name LIKE &quot;%Ethernet Adapter Name 2%&quot;) 
+  AND AdapterType LIKE &quot;%ethernet%&quot; 
+  AND NetConnectionStatus=2
+)
+</code></pre>
+
+<h4 id="properties-2">PROPERTIES</h4>
+
+<p><img src="/img/ConfigMan/TaskSequences/PreflightChecks/ts-pfc8.png?classes=border,shadow" alt="Properties for Wired Network Check" /></p>
+
+
+<footer class=" footline" align="right">
+	 <i class='fa fa-calendar'></i> Last Modified: 2017.09.05
+	</div>
+</footer>
+
+
+
+
+        
+
+      </div>
+    </div>
+
+
+    </section>
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>    
+
+    <script src="/js/clipboard.min.js"></script>
+<script src="/js/featherlight.min.js"></script>
+<script src="/js/html5shiv-printshiv.min.js"></script>
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<script src="/js/modernizr.custom.71422.js"></script>
+<script src="/js/learn.js"></script>
+<script src="/js/hugo-learn.js"></script>
+
+
+<link href="/mermaid/mermaid.css" type="text/css" rel="stylesheet"/>
+<script src="/mermaid/mermaid.js"></script>
+<script>mermaid.initialize({startOnLoad:true});</script>
+    
+
+  </body>
+</html>
+

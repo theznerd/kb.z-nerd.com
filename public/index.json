@@ -1,0 +1,113 @@
+[
+{
+	"uri": "/configman/installation/prerequisites/",
+	"title": "Prerequisites",
+	"tags": [],
+	"description": "",
+	"content": "test\n"
+},
+{
+	"uri": "/configman/installation/",
+	"title": "Installation",
+	"tags": [],
+	"description": "",
+	"content": "This is the landing page for ConfigMan Installation information.\n"
+},
+{
+	"uri": "/configman/tasksequences/drivers/",
+	"title": "Drivers",
+	"tags": [],
+	"description": "",
+	"content": "[placeholder for all things drivers… this one will be big]\n"
+},
+{
+	"uri": "/configman/",
+	"title": "ConfigMan / SCCM",
+	"tags": [],
+	"description": "",
+	"content": "This page is the landing page for ConfigMan related items.\n"
+},
+{
+	"uri": "/configman/installation/sqlserver/",
+	"title": "SQL Server",
+	"tags": [],
+	"description": "",
+	"content": " This page covers some of the prerequisites and gotchas when it comes to the SQL configuration.\nSQL Version Chart Central Site: Standard or Enterprise\nPrimary Site: Standard or Enterprise\nSecondary Site: Express\nMore configuration info here\nSQL Service Accounts You\u0026rsquo;ll need at least one domain account to run services from. You can use multiple, and honestly it\u0026rsquo;s probably more up to your SQL administrator than it will be up to you.\nRemote vs Local Okay look\u0026hellip; both work\u0026hellip; both are supported\u0026hellip; but one does work better. Do a local install wherever possible.\nServer Manager Prerequisites .NET Framework 3.5\nSQL Features to install Database Engine services\nReporting Services - Native\nManagement Tools (optional, but recommended)\nSQL Memory By default SQL will use as much memory as it possibly can. You should mitigate this by configuring a limit. You can do this in SSMS.\n"
+},
+{
+	"uri": "/configman/tasksequences/preflightchecks/",
+	"title": "Preflight Checks",
+	"tags": [],
+	"description": "",
+	"content": " Preflight checks are great for task sequences where you want to validate whether or not the task sequence should/can run. I handle preflight checks using a combination of options on \u0026ldquo;Set Dynamic Variables\u0026rdquo; and a final \u0026ldquo;Run Command Line\u0026rdquo; step with an option to look at that \u0026ldquo;master\u0026rdquo; variable. I also write to a separate variable to keep track of which pre-flight checks have failed so that I can notify on all the failure rather than possibly running the task sequence multiple times to detect them all.\nThe Setup First create a folder for your pre-flight checks to keep everything organized. This should be the first step in your task sequence (or very early on).\nNext you need to create a step that runs when we detect a failure. A \u0026ldquo;Run Command Line\u0026rdquo; step that runs cmd /c echo fail with options \u0026ldquo;Success codes:\u0026rdquo; equal 9999 and only runs when \u0026ldquo;TSFailure\u0026rdquo; equals \u0026ldquo;True\u0026rdquo;\nPreflight Check Template The template for a preflight check is just a \u0026ldquo;Set Dynamic Variables\u0026rdquo; step. It sets the TSFailure variable to \u0026ldquo;True\u0026rdquo; and then adds a description of what the failure was to PFFailure using two if statements (one to add if it already exists, one to create if it doesn\u0026rsquo;t exist).\nKnown Preflight Checks This is a list of pre-flight checks that I use on the regular\u0026hellip;\nAC Power Check This one is relatively simple, except that when you run this step in WinPE you need to load the battery driver. To do that create a \u0026ldquo;Run Command Line\u0026rdquo; step before this preflight check that runs the following command:\ndrvload %SystemRoot%\\Inf\\Battery.inf\nAnd have this step only run if the Task Sequence Variable \u0026ldquo;_SMSTSInWinPE\u0026rdquo; equals \u0026ldquo;True\u0026rdquo;\nThe code for this preflight check is as follows:\nOptions WMI Query: select * from Win32_Battery where BatteryStatus \u0026lt;\u0026gt; 2\nProperties USB Drive Check This one is really simple too (relatively). Basically just a WMI query to Win32_DiskDrive and make sure that the interface is not USB. I did run into one gotcha with Lenovo machines for a specific card reader (Generic-SD/MMC USB Device) that I needed to exclude.\nOptions WMI Query: select * from Win32_DiskDrive WHERE InterfaceType=\u0026quot;USB\u0026quot; and not Model=\u0026quot;Generic- SD/MMC USB Device\u0026quot;\nProperties Wired Network Check This one is more challenging. It relies on Win32_NetworkAdapter and the most reliable way to run this one in my opinion is to get the names of the adapters, add the AdapterType property, and add the NetConnectionStatus property. The structure of your query will read\nWHERE (\n(Name like \u0026ldquo;%nameofadapter% OR Name like \u0026ldquo;%nameofadapter2%)\nAND AdapterType LIKE \u0026ldquo;%ethernet%\u0026rdquo;\nAND NetConnectionStatus = 2\n)\nClear as mud? I was able to get the names of the network adapters through SSMS \u0026ldquo;Reports \u0026gt; Hardware - Network Adapters \u0026gt; Count network adapters by type\u0026rdquo;\nOPTIONS WMI Query:\nSelect * from Win32_NetworkAdapter WHERE ( (Name LIKE \u0026quot;%EthernetAdapterName%\u0026quot; OR Name LIKE \u0026quot;%Ethernet Adapter Name 2%\u0026quot;) AND AdapterType LIKE \u0026quot;%ethernet%\u0026quot; AND NetConnectionStatus=2 )  PROPERTIES "
+},
+{
+	"uri": "/configman/tasksequences/",
+	"title": "Task Sequences",
+	"tags": [],
+	"description": "",
+	"content": "This is the landing page for Task Sequence information.\n"
+},
+{
+	"uri": "/configman/tasksequences/imagemarkers/",
+	"title": "Image Markers",
+	"tags": [],
+	"description": "",
+	"content": " Image markers are a good way to keep track of what images you have deployed in your environment. This can be useful for reporting purposes, or if you keep track of known issues in your task sequences it\u0026rsquo;s a good way to know who needs remediation! There are a couple of ways to do this with pros and cons for each.\nRegistry Key(s) Just like the title suggests, create registry keys somewhere on the system. I typically do this under HKLM\\Software\\COMPANYNAME\\ImageMarker\nPros: Easy to digest and scalable (add multiple keys to track different things like date imaged, version of image, name of image, etc).\nCons: To report on it in SCCM you\u0026rsquo;ll need to create a custom MOF - use this utility https://gallery.technet.microsoft.com/RegKeyToMof-28e84c28\nFile Marker This is as simple as creating a file somewhere on the system. Typically I will create a blank \u0026ldquo;EXE\u0026rdquo; file since by default SCCM is collecting metadata from EXEs during the \u0026ldquo;Software Scan Cycle\u0026rdquo;\nPros: Easy to report on (using default SCCM reports), single step in the task sequence that is simple to modify.\nCons: Looks ugly in my opinion - creates possible unnecessary clutter on the workstation.\n"
+},
+{
+	"uri": "/configman/installation/pxe/",
+	"title": "PXE",
+	"tags": [],
+	"description": "",
+	"content": " While there are a couple methods to boot a bare metal machine (or a reimage) I like the convenience of PXE. However, it doesn\u0026rsquo;t come without it\u0026rsquo;s pitfalls. The process for PXE booting works similar to this:  Client powers on NIC initiates PXE process NIC acquires DHCP address NIC contacts PXE server (WDS) PXE server delivers NBP to client NIC TFTPs boot image (from WDS)  \rJason Sandys: Link\r\rAt step 3, if DHCP Options 66 / 67 are configured, the NIC will boot to the information returned by DHCP. If those options are not configured the NIC will send a broadcast message out asking for a PXE service point. This becomes a problem if the PXE server (SCCM) is not on the same subnet as the device requesting the PXE boot. This is where IP helpers come into play.\nIP Helpers If your DP/PXE server does not reside on the same subnet as the device that is PXE booting you will have to setup an IP Helper (or configure DHCP Options 66 / 67 - but this is not recommended by Microsoft). An IP helper (setup on a Layer 3 device - typically the router for the subnet) will basically take this broadcast packet and make sure that the request gets to the appropriate device on the appropriate subnet.\n"
+},
+{
+	"uri": "/configman/tasksequences/bios2uefi-dell/",
+	"title": "BIOS 2 UEFI - Dell",
+	"tags": [],
+	"description": "",
+	"content": "[to be written]\n"
+},
+{
+	"uri": "/configman/tasksequences/bios2uefi-lenovo/",
+	"title": "BIOS 2 UEFI - Lenovo",
+	"tags": [],
+	"description": "",
+	"content": "[to be written]\n"
+},
+{
+	"uri": "/configman/installation/wsus/",
+	"title": "WSUS",
+	"tags": [],
+	"description": "",
+	"content": "You have a SQL server already\u0026hellip; use it. Don\u0026rsquo;t be lazy and not ask your SQL Admin to create a new database for you. Just. Use. SQL.\n"
+},
+{
+	"uri": "/",
+	"title": "Welcome",
+	"tags": [],
+	"description": "",
+	"content": " Welcome to the Z-Nerd Knowledge Base This is the Z-Nerd Knowledge Base - I use this as a place to keep some random knowledge that I use in my consulting job. If I borrowed or learned the info from someone else - credit will be on the appropriate page. Feel free to poke around. At this time I do not allow contributors to this other than myself.\n"
+},
+{
+	"uri": "/_header/",
+	"title": "_Header",
+	"tags": [],
+	"description": "",
+	"content": "Z-Nerd KB "
+},
+{
+	"uri": "/categories/",
+	"title": "Categories",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "/tags/",
+	"title": "Tags",
+	"tags": [],
+	"description": "",
+	"content": ""
+}]
